@@ -20,3 +20,8 @@ install dependencies
 
 lock dependencies
 `pip freeze > requirements.txt`
+
+## Run application (Local)
+
+run application with active reload
+`uvicorn --app-dir=./app main:app --reload`
