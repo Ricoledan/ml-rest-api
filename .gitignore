@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# personal notes
+.notes.md
+
+# virtual environment
+env
