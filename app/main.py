@@ -1,10 +1,8 @@
 from typing import Optional
-from functools import wraps
 import os
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-import uvicorn
 from dotenv import load_dotenv
 from pydantic import BaseModel
 
