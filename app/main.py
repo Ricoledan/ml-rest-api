@@ -5,6 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from pydantic import BaseModel
+from middleware.verifytoken import verify_token
+from routes import models
 
 load_dotenv()
 
@@ -18,23 +20,12 @@ class HealthCheck(BaseModel):
     status: str
 
 
-async def verify_token(x_access_token: str = Header(...)):
-    if x_access_token != os.getenv('ACCESS_TOKEN'):
-        raise HTTPException(
-            status_code=400, detail="x-access-token header invalid")
+app.include_router(models.router)
 
 
 @app.get('/')
 def root():
     return "Machine Learning REST API Service"
-
-
-@app.get('/api/model', dependencies=[Depends(verify_token)])
-def root(request: Request):
-    headers = request.headers
-    auth = headers.get('x-access-token')
-    print(auth)
-    return auth
 
 
 @ app.get("/api/logs", dependencies=[Depends(verify_token)])
