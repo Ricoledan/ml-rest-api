@@ -1,10 +1,10 @@
+from app.types.healthcheck import HealthCheck
 from typing import Optional
 import os
 from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
-from pydantic import BaseModel
 from middleware.verifytoken import verify_token
 from routes import models
 
@@ -14,12 +14,6 @@ app = FastAPI()
 origins = ["*"]
 
 app.add_middleware(CORSMiddleware, allow_origins=origins)
-
-
-class HealthCheck(BaseModel):
-    status: str
-
-
 app.include_router(models.router)
 
 
