@@ -1,6 +1,6 @@
 # ML-REST-api
 
-🐍 A simple python-based REST API that deploys machine learning models
+🐍 A simple python-based REST API template that deploys machine learning models
 
 ## Setting up your Python environment
 
